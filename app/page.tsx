@@ -3,6 +3,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { EngineeringPhilosophySection } from "@/components/sections/EngineeringPhilosophySection";
 import { Footer } from "@/components/sections/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { LabMetricsSection } from "@/components/sections/LabMetricsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 mesh-overlay opacity-40" />
       <div className="relative z-10">
         <HeroSection />
+        <LabMetricsSection />
         <CaseStudiesSection />
         <EngineeringPhilosophySection />
         <SkillsSection />

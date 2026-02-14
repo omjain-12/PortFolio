@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { ArchitectureBlock } from "@/components/ui/ArchitectureBlock";
 import { Container } from "@/components/ui/Container";
-import { MetricsStrip } from "@/components/ui/MetricsStrip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { LinkButton } from "@/components/ui/LinkButton";
 import { caseStudies } from "@/data/portfolio";
 
 export function CaseStudiesSection() {
@@ -13,64 +12,40 @@ export function CaseStudiesSection() {
         <FadeIn>
           <SectionHeading
             eyebrow="Featured Case Studies"
-            title="AI systems engineered with measurable outcomes"
-            description="Technical breakdowns focused on architecture, constraints, tradeoffs, and validated performance metrics."
+            title="Engineered AI projects"
+            description="Compact technical snapshots with architecture flow and headline outcomes."
           />
         </FadeIn>
 
-        <div className="space-y-10">
+        <div className="space-y-4">
           {caseStudies.map((study, index) => (
             <FadeIn key={study.id} delay={0.04 * index}>
-              <article className="space-y-7 border-l border-border/90 pl-5 md:pl-8">
-                <header className="space-y-3">
-                  <p className="text-xs uppercase tracking-[0.14em] text-slate-400">Case Study {String(index + 1).padStart(2, "0")}</p>
-                  <h3 className="font-[var(--font-space-grotesk)] text-2xl font-semibold tracking-tight text-slate-100 md:text-3xl">
-                    {study.title}
-                  </h3>
-                  <p className="max-w-4xl text-sm leading-relaxed text-slate-300 md:text-base">{study.problemStatement}</p>
-                </header>
-
-                <div className="grid gap-5 lg:grid-cols-2">
+              <article className="rounded-xl border border-border/85 bg-slate-950/35 px-4 py-4 transition-all duration-300 hover:border-cyan-300/35 hover:bg-slate-950/55 md:px-5">
+                <div className="grid items-start gap-4 md:grid-cols-[minmax(0,1fr)_180px] md:gap-6">
                   <div className="space-y-3">
-                    <h4 className="text-xs uppercase tracking-[0.14em] text-slate-400">Architecture</h4>
-                    <ArchitectureBlock steps={study.architecture} />
+                    <h3 className="font-[var(--font-space-grotesk)] text-xl font-semibold tracking-tight text-slate-100 md:text-2xl">
+                      {study.title}
+                    </h3>
+                    <p className="text-sm text-slate-300">{study.summaryLine}</p>
+                    <ArchitectureBlock steps={study.architectureFlow} />
+
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      <LinkButton href={study.github} external>
+                        GitHub
+                      </LinkButton>
+                      <LinkButton href={study.caseStudy} external variant="ghost">
+                        Case Study
+                      </LinkButton>
+                    </div>
                   </div>
-                  <div className="space-y-3">
-                    <h4 className="text-xs uppercase tracking-[0.14em] text-slate-400">Key Design Decisions</h4>
-                    <ul className="space-y-2 rounded-xl border border-border/80 bg-slate-950/40 p-4">
-                      {study.keyDesignDecisions.map((decision) => (
-                        <li key={decision} className="text-sm leading-relaxed text-slate-200">
-                          - {decision}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
 
-                <div className="space-y-3">
-                  <h4 className="text-xs uppercase tracking-[0.14em] text-slate-400">Performance Metrics</h4>
-                  <MetricsStrip metrics={study.performanceMetrics} />
+                  <aside className="rounded-lg border border-cyan-300/30 bg-slate-900/65 px-4 py-4 text-center md:text-left">
+                    <p className="font-[var(--font-space-grotesk)] text-4xl font-bold leading-none tracking-tight text-slate-50">
+                      {study.primaryMetric}
+                    </p>
+                    <p className="mt-2 text-xs uppercase tracking-[0.12em] text-cyan-200/90">{study.metricCaption}</p>
+                  </aside>
                 </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-xs uppercase tracking-[0.14em] text-slate-400">Engineering Challenges</h4>
-                  <ul className="grid gap-2">
-                    {study.engineeringChallenges.map((challenge) => (
-                      <li key={challenge} className="text-sm leading-relaxed text-slate-300">
-                        • {challenge}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Link
-                  href={study.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex text-sm font-medium text-orange-300 transition-colors hover:text-orange-200"
-                >
-                  View GitHub Repository
-                </Link>
               </article>
             </FadeIn>
           ))}
