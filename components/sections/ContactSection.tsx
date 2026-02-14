@@ -8,11 +8,11 @@ export function ContactSection() {
   return (
     <section id="contact" className="section-divider section-shell">
       <Container>
-        <FadeIn className="glass-surface rounded-2xl p-6 md:p-8">
+        <FadeIn className="rounded-2xl border border-border/80 bg-slate-950/35 p-6 md:p-8">
           <SectionHeading
             eyebrow="Contact"
             title="If you&apos;re building ambitious AI systems, let&apos;s collaborate."
-            description="Open to AI/ML internships where research depth meets shipping discipline."
+            description="Open to AI/ML internships focused on real engineering impact."
           />
 
           <div className="mt-2 flex flex-wrap gap-3">

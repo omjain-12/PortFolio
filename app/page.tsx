@@ -1,10 +1,8 @@
-import { AboutSection } from "@/components/sections/AboutSection";
-import { AchievementsSection } from "@/components/sections/AchievementsSection";
+import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { EngineeringPhilosophySection } from "@/components/sections/EngineeringPhilosophySection";
 import { Footer } from "@/components/sections/Footer";
-import { FullStackSection } from "@/components/sections/FullStackSection";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 
 export default function Home() {
@@ -13,11 +11,9 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 mesh-overlay opacity-40" />
       <div className="relative z-10">
         <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <FullStackSection />
+        <CaseStudiesSection />
+        <EngineeringPhilosophySection />
         <SkillsSection />
-        <AchievementsSection />
         <ContactSection />
         <Footer />
       </div>

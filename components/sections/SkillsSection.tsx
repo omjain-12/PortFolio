@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/Badge";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,15 +18,17 @@ export function SkillsSection() {
         <div className="grid gap-4 md:grid-cols-2">
           {skillGroups.map((group, index) => (
             <FadeIn key={group.title} delay={0.05 * index}>
-              <article className="glass-surface rounded-xl p-5 transition-all duration-300 hover:shadow-cardHover">
+              <article className="rounded-xl border border-border/80 bg-slate-950/35 p-5">
                 <h3 className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.12em] text-slate-200">
                   {group.title}
                 </h3>
-                <div className="mt-4 flex flex-wrap gap-2.5">
+                <ul className="mt-4 grid gap-2 text-sm text-slate-300">
                   {group.items.map((item) => (
-                    <Badge key={item}>{item}</Badge>
+                    <li key={item} className="border-b border-border/35 pb-2 last:border-none last:pb-0">
+                      {item}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </article>
             </FadeIn>
           ))}

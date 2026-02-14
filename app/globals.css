@@ -13,9 +13,8 @@ html {
 body {
   @apply bg-background text-foreground antialiased;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background-image: radial-gradient(circle at 8% 2%, rgba(255, 75, 43, 0.16), transparent 30%),
-    radial-gradient(circle at 90% 24%, rgba(124, 58, 237, 0.18), transparent 34%),
-    radial-gradient(circle at 92% 96%, rgba(255, 138, 61, 0.14), transparent 33%);
+  background-image: radial-gradient(circle at 8% 2%, rgba(255, 75, 43, 0.1), transparent 30%),
+    radial-gradient(circle at 88% 20%, rgba(124, 58, 237, 0.11), transparent 34%);
   min-height: 100vh;
 }
 
@@ -35,7 +34,7 @@ body {
 .glass-surface {
   background: linear-gradient(160deg, rgba(17, 26, 46, 0.85), rgba(15, 23, 42, 0.64));
   border: 1px solid rgba(148, 163, 184, 0.2);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
 }
 
 .mesh-overlay {

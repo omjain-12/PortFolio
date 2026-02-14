@@ -1,24 +1,20 @@
-export type Project = {
+export type CaseStudy = {
   id: string;
   title: string;
-  summary: string;
-  highlights: string[];
-  tech: string[];
+  problemStatement: string;
+  architecture: string[];
+  keyDesignDecisions: string[];
+  performanceMetrics: Array<{
+    label: string;
+    value: string;
+  }>;
+  engineeringChallenges: string[];
   github: string;
-  demo: string;
-  thumbnail: string;
-};
-
-export type EngineeringItem = {
-  title: string;
-  description: string;
-  metric: string;
 };
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Engineering", href: "#engineering" },
+  { label: "Case Studies", href: "#case-studies" },
+  { label: "Philosophy", href: "#philosophy" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
@@ -30,123 +26,150 @@ export const socialLinks = {
   email: "mailto:om.jain.ai@example.com",
 };
 
-export const projects: Project[] = [
+export const caseStudies: CaseStudy[] = [
   {
     id: "rag-qa",
     title: "Document Intelligence Q&A (RAG)",
-    summary:
-      "A retrieval-augmented question-answering system for technical documents with robust chunk ranking and constrained generation.",
-    highlights: [
-      "Median latency of 2.9s on 120-page PDFs with asynchronous retrieval.",
-      "Hybrid chunking + vector indexing with top-k reranking for precision context selection.",
-      "Hallucination rate reduced by 36% via retrieval-grounded response constraints.",
-      "Modular API architecture with swappable embedding and inference providers.",
+    problemStatement:
+      "Technical teams needed trustworthy, low-latency answers from large internal documents where pure generation produced unstable, often hallucinated outputs.",
+    architecture: [
+      "Document ingestion and semantic chunking pipeline",
+      "Vector indexing with metadata-aware filtering",
+      "Top-k retrieval and reranking with contextual compression",
+      "Grounded answer generation with response validation",
     ],
-    tech: ["FastAPI", "LangChain", "ChromaDB", "OpenAI API", "Docker"],
+    keyDesignDecisions: [
+      "Chose hybrid chunking to preserve section semantics while improving recall.",
+      "Separated retrieval and generation into modular services for independent scaling.",
+      "Added confidence-gated fallback to reduce unsupported claims.",
+    ],
+    performanceMetrics: [
+      { label: "End-to-end Latency", value: "~3.0s" },
+      { label: "Hallucination Reduction", value: "-36%" },
+      { label: "Top-k Retrieval Precision", value: "0.89" },
+    ],
+    engineeringChallenges: [
+      "Balancing context length with retrieval relevance under strict latency budgets.",
+      "Stabilizing answer quality for ambiguous queries with sparse evidence.",
+    ],
     github: "https://github.com/placeholder/document-intelligence-rag",
-    demo: "https://demo.example.com/rag-qa",
-    thumbnail: "/placeholders/project-rag.svg",
   },
   {
     id: "mini-transformer",
     title: "Mini Transformer Language Model",
-    summary:
-      "A decoder-only Transformer built from first principles with optimized sampling and efficient inference for short-form technical text.",
-    highlights: [
-      "4-layer decoder-only architecture with 4 attention heads and rotary position embeddings.",
-      "Validation perplexity of 1.43 on a curated corpus of structured technical data.",
-      "Weight tying + top-k sampling for coherent generation under low compute budgets.",
-      "KV-cache optimized decoding for 1.9x faster token throughput.",
+    problemStatement:
+      "Most educational implementations hide optimization details; this system was built to deeply understand transformer internals while achieving strong perplexity under constrained compute.",
+    architecture: [
+      "Tokenization and vocabulary pipeline",
+      "4-layer decoder-only Transformer (4 heads)",
+      "Weight tying and causal masking",
+      "Top-k sampling with KV-cache inference path",
     ],
-    tech: ["PyTorch", "Transformers", "NumPy", "CUDA", "Weights & Biases"],
+    keyDesignDecisions: [
+      "Used weight tying to reduce parameters while retaining output quality.",
+      "Implemented KV-cache to improve decoding throughput.",
+      "Selected top-k sampling over greedy decoding for better generation diversity.",
+    ],
+    performanceMetrics: [
+      { label: "Validation Perplexity", value: "1.43" },
+      { label: "Decoder Layers", value: "4" },
+      { label: "Inference Speedup", value: "1.9x" },
+    ],
+    engineeringChallenges: [
+      "Numerical instability during early training at higher learning rates.",
+      "Managing memory footprint while preserving sequence context.",
+    ],
     github: "https://github.com/placeholder/mini-transformer-lm",
-    demo: "https://demo.example.com/mini-transformer",
-    thumbnail: "/placeholders/project-transformer.svg",
   },
   {
     id: "unet-denoise",
     title: "U-Net Image Denoising",
-    summary:
-      "A U-Net denoising pipeline for low-light and synthetic noise conditions, tuned for reconstruction quality and stable training.",
-    highlights: [
-      "Trained on 5k aligned image pairs with mixed Gaussian and Poisson corruption.",
-      "Reached 30.4 dB PSNR and 0.92 SSIM on validation patches.",
-      "4x effective data variance with geometric and frequency-space augmentation.",
-      "Mixed precision training improved throughput by 32% on a single GPU.",
+    problemStatement:
+      "Noisy low-light inputs degraded downstream computer vision tasks, requiring a denoiser that preserved structure while minimizing oversmoothing artifacts.",
+    architecture: [
+      "Paired data loader with synthetic + real noise profiles",
+      "Encoder-decoder U-Net with skip connections",
+      "Composite loss for structure and pixel fidelity",
+      "Mixed precision GPU training loop",
     ],
-    tech: ["TensorFlow", "OpenCV", "U-Net", "Albumentations", "CUDA"],
+    keyDesignDecisions: [
+      "Introduced mixed noise augmentation to improve real-world robustness.",
+      "Kept skip pathways wide to preserve high-frequency detail.",
+      "Used lightweight post-processing only when confidence dropped.",
+    ],
+    performanceMetrics: [
+      { label: "PSNR", value: "~30 dB" },
+      { label: "SSIM", value: "0.92" },
+      { label: "Training Throughput", value: "+32%" },
+    ],
+    engineeringChallenges: [
+      "Preventing edge blurring on fine textures.",
+      "Maintaining stable gradients across aggressive augmentations.",
+    ],
     github: "https://github.com/placeholder/unet-image-denoising",
-    demo: "https://demo.example.com/unet-denoising",
-    thumbnail: "/placeholders/project-unet.svg",
   },
   {
     id: "timeseries-forecasting",
     title: "Time Series Forecasting (LSTM/GRU)",
-    summary:
-      "A reproducible forecasting framework comparing recurrent models for airline passenger demand under strict evaluation controls.",
-    highlights: [
-      "Benchmarked LSTM and GRU baselines with rolling-window evaluation.",
-      "Achieved 27.8% RMSE with tuned sequence length and dropout schedule.",
-      "CLI-driven early stopping, checkpointing, and experiment tracking.",
-      "Reproducible runs through fixed seeds and versioned YAML configs.",
+    problemStatement:
+      "Forecasting airline passenger demand required robust temporal modeling with reproducible evaluation and error control under seasonal shifts.",
+    architecture: [
+      "Data normalization and rolling-window sequence generator",
+      "Parallel LSTM and GRU training pipelines",
+      "Early stopping and checkpoint management CLI",
+      "Reproducible experiment runner with seeded configs",
     ],
-    tech: ["PyTorch", "Pandas", "Matplotlib", "Hydra", "CLI"],
+    keyDesignDecisions: [
+      "Compared LSTM and GRU under identical preprocessing and split strategy.",
+      "Applied rolling evaluation to avoid leakage from temporal ordering.",
+      "Versioned hyperparameters with deterministic seeds.",
+    ],
+    performanceMetrics: [
+      { label: "RMSE", value: "27.8%" },
+      { label: "Forecast Horizon", value: "12 steps" },
+      { label: "Reproducibility", value: "100% seeded" },
+    ],
+    engineeringChallenges: [
+      "Reducing overfit on short seasonal segments.",
+      "Aligning model sensitivity across volatile trend shifts.",
+    ],
     github: "https://github.com/placeholder/timeseries-lstm-gru",
-    demo: "https://demo.example.com/timeseries-forecasting",
-    thumbnail: "/placeholders/project-timeseries.svg",
   },
 ];
 
-export const engineeringItems: EngineeringItem[] = [
+export const engineeringPhilosophy = [
   {
-    title: "Real-time Product Workflows",
-    description: "Designed event-aware interfaces and streaming update pipelines for collaborative dashboards.",
-    metric: "95th percentile render latency under 120ms",
+    title: "Systems Thinking",
+    description:
+      "I design AI solutions as end-to-end systems, not isolated models. Data flow, retrieval quality, inference behavior, and API reliability are treated as a single architecture.",
   },
   {
-    title: "REST API Systems",
-    description: "Built and maintained 25+ APIs with typed contracts, validation middleware, and observability hooks.",
-    metric: "Throughput improved by 41% after endpoint refactors",
+    title: "Optimization Mindset",
+    description:
+      "Latency, memory, and throughput are first-class constraints. I prioritize measurable improvements through profiling, model-aware tradeoffs, and practical infrastructure decisions.",
   },
   {
-    title: "Authentication & Security",
-    description: "Implemented JWT auth, role-based access patterns, and refresh-token session hardening.",
-    metric: "Zero critical auth regressions across releases",
-  },
-  {
-    title: "Dockerized Deployments",
-    description: "Containerized services with reproducible local/prod parity and staged rollout workflows.",
-    metric: "Deployment setup time reduced by 55%",
-  },
-  {
-    title: "Backend Optimization",
-    description: "Focused on query tuning, cache strategy, and payload minimization for production APIs.",
-    metric: "Key endpoints stabilized under 200ms",
+    title: "Research-to-Production",
+    description:
+      "I bridge experimentation and deployment by enforcing reproducibility, observability, and modular design so prototypes can evolve into maintainable products.",
   },
 ];
 
 export const skillGroups = [
   {
     title: "AI & ML",
-    items: ["TensorFlow", "PyTorch", "Transformers", "NLP", "Computer Vision", "RNNs"],
+    items: ["PyTorch", "TensorFlow", "Transformers", "NLP", "Computer Vision", "RNNs"],
   },
   {
     title: "MLOps & Deployment",
-    items: ["Docker", "AWS", "FastAPI", "REST APIs", "CI/CD", "Monitoring"],
+    items: ["Docker", "AWS", "FastAPI", "REST APIs", "Experiment Tracking", "Monitoring"],
   },
   {
     title: "Programming",
-    items: ["Python", "C++", "JavaScript", "TypeScript", "SQL", "Bash"],
+    items: ["Python", "C++", "TypeScript", "JavaScript", "SQL", "Bash"],
   },
   {
     title: "Data & Math",
-    items: ["NumPy", "Pandas", "Feature Engineering", "Probability", "Linear Algebra"],
+    items: ["NumPy", "Pandas", "Feature Engineering", "Probability", "Linear Algebra", "Statistics"],
   },
-];
-
-export const achievements = [
-  "Competitive programming rank in top 15% cohort",
-  "450+ algorithmic problems solved across coding platforms",
-  "Academic branch change secured within top 5%",
-  "Gold recognition in product and AI innovation challenge",
 ];
