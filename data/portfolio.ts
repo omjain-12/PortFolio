@@ -1,12 +1,14 @@
-export type CaseStudy = {
+export type Project = {
   id: string;
   title: string;
-  summaryLine: string;
+  problemStatement: string;
   architectureFlow: string[];
-  primaryMetric: string;
-  metricCaption: string;
+  quantifiableResults: Array<{
+    metric: string;
+    value: string;
+  }>;
+  techStack: string[];
   github: string;
-  caseStudy: string;
 };
 
 export const navLinks = [
@@ -18,60 +20,88 @@ export const navLinks = [
 
 export const socialLinks = {
   resume: "https://example.com/om-jain-resume.pdf",
-  github: "https://github.com/placeholder/ai-portfolio",
+  github: "https://github.com/omjain-12/PortFolio",
   linkedin: "https://www.linkedin.com/in/placeholder-ai-engineer/",
   email: "mailto:om.jain.ai@example.com",
 };
 
 export const labMetrics = [
-  { label: "Language Modeling", value: "<1.5 Perplexity" },
-  { label: "RAG Retrieval", value: "~3s Query Latency" },
-  { label: "Vision Restoration", value: "30 dB PSNR" },
-  { label: "API Performance", value: "<200ms Backend Latency" },
+  { label: "Models Trained", value: "3 Production-Grade Pipelines" },
+  { label: "Average Inference", value: "<200ms Optimized Serving" },
+  { label: "Total Parameters", value: "20M+ Parameters Trained" },
+  { label: "Deployment Focus", value: "MLOps + Scalable APIs" },
 ];
 
-export const caseStudies: CaseStudy[] = [
+export const projects: Project[] = [
   {
-    id: "rag-qa",
-    title: "Document Intelligence Q&A (RAG)",
-    summaryLine: "Low-latency, grounded Q&A over long technical PDFs with retrieval-constrained generation.",
-    architectureFlow: ["PDF", "Chunking", "Embedding", "Vector Index", "Top-k", "LLM"],
-    primaryMetric: "~3s",
-    metricCaption: "Median end-to-end query latency",
-    github: "https://github.com/placeholder/document-intelligence-rag",
-    caseStudy: "https://example.com/case-study/rag-document-intelligence",
+    id: "unet-land-use-segmentation",
+    title: "U-Net Land Use Segmentation",
+    problemStatement:
+      "Built a U-Net with EfficientNetB3 encoder to segment agriculture, urban, and water classes from satellite imagery at deployment-relevant scale.",
+    architectureFlow: [
+      "Satellite Tiles",
+      "Preprocessing & Augmentation",
+      "EfficientNetB3 Encoder",
+      "U-Net Decoder",
+      "Multi-Class Segmentation",
+      "IoU/PSNR Evaluation",
+    ],
+    quantifiableResults: [
+      { metric: "Dataset Volume", value: "50k+ image-mask pairs" },
+      { metric: "Mean IoU", value: "0.84" },
+      { metric: "PSNR", value: "31.2 dB" },
+      { metric: "GPU Throughput", value: "4.3 imgs/s" },
+    ],
+    techStack: ["TensorFlow", "Keras", "EfficientNetB3", "OpenCV", "NumPy"],
+    github: "https://github.com/placeholder/unet-land-use-segmentation",
   },
   {
-    id: "mini-transformer",
-    title: "Mini Transformer Language Model",
-    summaryLine: "Decoder-only Transformer from scratch optimized for quality and inference efficiency.",
-    architectureFlow: ["Dataset", "Tokenizer", "Decoder-Only Transformer", "KV Cache", "Top-k Sampler", "Output"],
-    primaryMetric: "<1.5",
-    metricCaption: "Validation perplexity",
-    github: "https://github.com/placeholder/mini-transformer-lm",
-    caseStudy: "https://example.com/case-study/mini-transformer-lm",
+    id: "custom-transformer-en-hi",
+    title: "Custom Transformer (English → Hindi)",
+    problemStatement:
+      "Implemented the Transformer architecture from \"Attention Is All You Need\" from scratch for production-minded English-to-Hindi translation workflows.",
+    architectureFlow: [
+      "Parallel Corpus",
+      "Tokenization",
+      "Positional Encoding",
+      "Encoder-Decoder Transformer",
+      "Beam Search Inference",
+      "Perplexity Monitoring",
+    ],
+    quantifiableResults: [
+      { metric: "Validation Perplexity", value: "1.42" },
+      { metric: "Training Epochs", value: "42 epochs" },
+      { metric: "Parameter Count", value: "18.6M" },
+      { metric: "Avg Inference Latency", value: "170ms/sentence" },
+    ],
+    techStack: ["PyTorch", "SentencePiece", "CUDA", "Python", "Weights & Biases"],
+    github: "https://github.com/placeholder/custom-transformer-en-hi",
   },
   {
-    id: "unet-denoise",
-    title: "U-Net Image Denoising",
-    summaryLine: "Noise-robust U-Net reconstruction tuned for detail retention and stable training.",
-    architectureFlow: ["Noisy Image", "Encoder", "Bottleneck", "Decoder + Skips", "Reconstruction", "PSNR Eval"],
-    primaryMetric: "30 dB",
-    metricCaption: "PSNR on validation set",
-    github: "https://github.com/placeholder/unet-image-denoising",
-    caseStudy: "https://example.com/case-study/unet-image-denoising",
-  },
-  {
-    id: "timeseries-forecasting",
-    title: "Time Series Forecasting (LSTM/GRU)",
-    summaryLine: "Reproducible temporal forecasting pipeline with low-error recurrent baselines.",
-    architectureFlow: ["Time Series", "Windowing", "LSTM/GRU", "Validation", "Forecast", "RMSE Monitor"],
-    primaryMetric: "27.8%",
-    metricCaption: "RMSE",
-    github: "https://github.com/placeholder/timeseries-lstm-gru",
-    caseStudy: "https://example.com/case-study/time-series-forecasting",
+    id: "biofuel-multimodal-predictor",
+    title: "Bio-Fuel Multi-Modal Predictor",
+    problemStatement:
+      "Designed a multi-modal model combining CNN image features with ANN tabular features to predict net investment and profit for biofuel conversion scenarios.",
+    architectureFlow: [
+      "Feedstock Images",
+      "CNN Feature Extractor",
+      "Process Metadata",
+      "ANN Tabular Branch",
+      "Feature Fusion",
+      "Investment/Profit Prediction",
+    ],
+    quantifiableResults: [
+      { metric: "Profit Prediction R²", value: "0.91" },
+      { metric: "Investment MAE", value: "±4.8%" },
+      { metric: "Pipeline Runtime", value: "-33% after batching" },
+      { metric: "Data Processed", value: "120k+ multimodal records" },
+    ],
+    techStack: ["PyTorch", "Scikit-Learn", "Pandas", "FastAPI", "Docker"],
+    github: "https://github.com/placeholder/biofuel-multimodal-predictor",
   },
 ];
+
+export const caseStudies = projects;
 
 export const engineeringPhilosophy = [
   {
@@ -103,19 +133,15 @@ export const engineeringPhilosophy = [
 
 export const skillGroups = [
   {
-    title: "AI & ML",
-    items: ["PyTorch", "TensorFlow", "Transformers", "NLP", "Computer Vision", "RNNs"],
+    title: "Model Development",
+    items: ["PyTorch", "TensorFlow", "Scikit-Learn"],
   },
   {
-    title: "MLOps & Deployment",
-    items: ["Docker", "AWS", "FastAPI", "REST APIs", "Experiment Tracking", "Monitoring"],
+    title: "MLOps & Infrastructure",
+    items: ["Docker", "AWS", "FastAPI", "Linux/Ubuntu"],
   },
   {
-    title: "Programming",
-    items: ["Python", "C++", "TypeScript", "JavaScript", "SQL", "Bash"],
-  },
-  {
-    title: "Data & Math",
-    items: ["NumPy", "Pandas", "Feature Engineering", "Probability", "Linear Algebra", "Statistics"],
+    title: "Data Engineering",
+    items: ["Pandas", "NumPy", "RAG pipelines"],
   },
 ];

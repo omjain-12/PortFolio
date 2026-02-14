@@ -10,12 +10,12 @@ export function SkillsSection() {
         <FadeIn>
           <SectionHeading
             eyebrow="Skills"
-            title="Technical capabilities"
-            description="A balanced stack across model development, deployment systems, and software engineering fundamentals."
+            title="Industry MLOps skills matrix"
+            description="Production-focused capabilities across model development, infrastructure, and data engineering workflows."
           />
         </FadeIn>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-3">
           {skillGroups.map((group, index) => (
             <FadeIn key={group.title} delay={0.05 * index}>
               <article className="rounded-xl border border-border/80 bg-slate-950/35 p-5">

@@ -31,12 +31,12 @@ export function HeroSection() {
           <p className="text-xs uppercase tracking-[0.2em] text-slate-400">IIT Kharagpur · 2023–2027</p>
 
           <h1 className="mt-4 font-[var(--font-space-grotesk)] text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl md:text-6xl">
-            Engineering Intelligent Systems from First Principles.
+            Applied AI/ML Engineer for Production-Scale Systems.
           </h1>
 
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300 md:text-lg">
-            I design and ship AI systems with strong architectural reasoning, measured performance, and
-            research-to-production discipline across LLM, vision, and forecasting workflows.
+            I build deep learning and MLOps pipelines that are measurable, deployable, and latency-aware. From model
+            architecture to API serving, I focus on robust systems that perform under real operational constraints.
           </p>
 
           <div className="mt-8 h-1 w-64 overflow-hidden rounded-full bg-slate-700/60 md:w-80">
