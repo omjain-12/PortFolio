@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-inter",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
-  title: "Om Jain | AI Engineer Portfolio",
+  title: "Om Jain | AI Engineer",
   description:
-    "AI Engineer portfolio of Om Jain (IIT Kharagpur) focused on deep learning systems, transformers, and production-ready AI pipelines.",
+    "AI Engineer portfolio for Om Jain - IIT Kharagpur. Deep learning, transformers, RAG systems, and production AI engineering.",
 };
 
 export default function RootLayout({
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>{children}</body>
     </html>
   );
 }

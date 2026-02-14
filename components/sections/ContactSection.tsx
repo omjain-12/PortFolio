@@ -6,20 +6,26 @@ import { socialLinks } from "@/data/portfolio";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="section-divider py-16 md:py-20">
+    <section id="contact" className="section-divider section-shell">
       <Container>
-        <FadeIn>
-          <SectionHeading eyebrow="Contact" title="If you&apos;re building serious AI systems, I&apos;d love to contribute." />
-        </FadeIn>
+        <FadeIn className="glass-surface rounded-2xl p-6 md:p-8">
+          <SectionHeading
+            eyebrow="Contact"
+            title="If you&apos;re building ambitious AI systems, let&apos;s collaborate."
+            description="Open to AI/ML internships where research depth meets shipping discipline."
+          />
 
-        <FadeIn delay={0.05} className="mt-2 flex flex-wrap gap-3">
-          <LinkButton href={socialLinks.email}>Email</LinkButton>
-          <LinkButton href={socialLinks.github} external>
-            GitHub
-          </LinkButton>
-          <LinkButton href={socialLinks.linkedin} external>
-            LinkedIn
-          </LinkButton>
+          <div className="mt-2 flex flex-wrap gap-3">
+            <LinkButton href={socialLinks.email} variant="primary">
+              Email
+            </LinkButton>
+            <LinkButton href={socialLinks.linkedin} external>
+              LinkedIn
+            </LinkButton>
+            <LinkButton href={socialLinks.github} external>
+              GitHub
+            </LinkButton>
+          </div>
         </FadeIn>
       </Container>
     </section>

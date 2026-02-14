@@ -1,34 +1,35 @@
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
-const points = [
-  "Built MERN applications with clean API-first architecture.",
-  "Designed and shipped 25+ REST APIs with robust validation.",
-  "Implemented JWT-based authentication and role-safe access controls.",
-  "Maintained backend latency under 200ms for key endpoints.",
-  "Containerized deployments using Docker for reproducible environments.",
-];
+import { engineeringItems } from "@/data/portfolio";
 
 export function FullStackSection() {
   return (
-    <section id="engineering" className="section-divider py-16 md:py-20">
+    <section id="engineering" className="section-divider section-shell">
       <Container>
         <FadeIn>
           <SectionHeading
             eyebrow="Full Stack Engineering"
-            title="Systems that bridge model intelligence and product reliability"
+            title="System engineering beyond model training"
+            description="Real-time products, robust APIs, and deployment-ready backend systems built with reliability-first design."
           />
         </FadeIn>
 
         <FadeIn delay={0.06}>
-          <ul className="grid gap-3 text-sm text-slate-300 md:grid-cols-2">
-            {points.map((point) => (
-              <li key={point} className="rounded-lg border border-border/80 bg-slate-900/40 px-4 py-3">
-                {point}
-              </li>
+          <div className="grid gap-4 lg:grid-cols-5">
+            {engineeringItems.map((item) => (
+              <article
+                key={item.title}
+                className="glass-surface rounded-xl p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+              >
+                <h3 className="font-[var(--font-space-grotesk)] text-base font-semibold text-slate-100">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.description}</p>
+                <p className="mt-4 rounded-md border border-border/80 bg-slate-950/45 px-3 py-2 text-xs text-orange-200">
+                  {item.metric}
+                </p>
+              </article>
             ))}
-          </ul>
+          </div>
         </FadeIn>
       </Container>
     </section>

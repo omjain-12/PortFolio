@@ -9,15 +9,18 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <FullStackSection />
-      <SkillsSection />
-      <AchievementsSection />
-      <ContactSection />
-      <Footer />
+    <main className="relative min-h-screen overflow-x-clip">
+      <div className="pointer-events-none absolute inset-0 mesh-overlay opacity-40" />
+      <div className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection />
+        <FullStackSection />
+        <SkillsSection />
+        <AchievementsSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 }
