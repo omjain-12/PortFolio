@@ -15,7 +15,7 @@ export function SkillsSection() {
           />
         </FadeIn>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group, index) => (
             <FadeIn key={group.title} delay={0.05 * index}>
               <article className="rounded-xl border border-border/80 bg-slate-950/35 p-5">

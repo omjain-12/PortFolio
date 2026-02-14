@@ -27,9 +27,16 @@ export function CaseStudiesSection() {
                     <h3 className="font-[var(--font-space-grotesk)] text-xl font-semibold tracking-tight text-slate-100 md:text-2xl">
                       {study.title}
                     </h3>
-                    <LinkButton href={study.github} external>
-                      GitHub
-                    </LinkButton>
+                    <div className="flex flex-wrap gap-2">
+                      <LinkButton href={study.github} external>
+                        GitHub
+                      </LinkButton>
+                      {study.liveLink ? (
+                        <LinkButton href={study.liveLink} external variant="ghost">
+                          Live Demo
+                        </LinkButton>
+                      ) : null}
+                    </div>
                   </div>
 
                   <p className="border-l-2 border-cyan-300/45 pl-3 text-sm leading-relaxed text-slate-300">

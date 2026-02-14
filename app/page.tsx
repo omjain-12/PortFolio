@@ -2,6 +2,7 @@ import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { EngineeringPhilosophySection } from "@/components/sections/EngineeringPhilosophySection";
 import { Footer } from "@/components/sections/Footer";
+import { FullStackSection } from "@/components/sections/FullStackSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { LabMetricsSection } from "@/components/sections/LabMetricsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -14,8 +15,9 @@ export default function Home() {
         <HeroSection />
         <LabMetricsSection />
         <CaseStudiesSection />
-        <EngineeringPhilosophySection />
+        <FullStackSection />
         <SkillsSection />
+        <EngineeringPhilosophySection />
         <ContactSection />
         <Footer />
       </div>

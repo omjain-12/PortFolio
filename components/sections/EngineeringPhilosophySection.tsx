@@ -10,8 +10,8 @@ export function EngineeringPhilosophySection() {
         <FadeIn>
           <SectionHeading
             eyebrow="Engineering Philosophy"
-            title="How I build AI systems"
-            description="I approach AI engineering as a systems discipline where model quality, infrastructure reliability, and product outcomes are tightly coupled."
+            title="How I Engineer AI Systems"
+            description="I treat AI as a systems discipline — where model quality, infrastructure reliability, and product impact are engineered together, not in isolation."
           />
         </FadeIn>
 

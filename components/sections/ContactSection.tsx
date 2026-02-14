@@ -10,16 +10,16 @@ export function ContactSection() {
       <Container>
         <FadeIn className="rounded-2xl border border-border/80 bg-slate-950/35 p-6 md:p-8">
           <SectionHeading
-            eyebrow="Contact"
-            title="If you&apos;re building ambitious AI systems, let&apos;s collaborate."
-            description="Open to AI/ML internships focused on real engineering impact."
+            eyebrow="Next Step"
+            title="If you&apos;re building serious AI systems, I&apos;d love to contribute."
+            description="Currently seeking AI/ML internships focused on scalable, production-grade engineering."
           />
 
           <div className="mt-2 flex flex-wrap gap-3">
-            <LinkButton href={socialLinks.email} variant="primary">
+            <LinkButton href={socialLinks.email}>
               Email
             </LinkButton>
-            <LinkButton href={socialLinks.linkedin} external>
+            <LinkButton href={socialLinks.linkedin} external variant="primary">
               LinkedIn
             </LinkButton>
             <LinkButton href={socialLinks.github} external>
